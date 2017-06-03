@@ -1,18 +1,44 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+
 import './App.css';
 
+
+
+const Button=(props)=>{
+  return(
+    <button onClick={()=>{props.onClickFunction(props.increaseValue)}}>
+      {props.increaseValue}
+    </button>
+)};
+
+
+
+const Result= (props)=>{
+  return(
+    <div>{props.counter}</div>
+  );
+}
 class App extends Component {
+  constructor(props) {
+    super(props);
+    
+    this.state = {
+      counter: 0
+    }
+  }
+  state={counter:0}
+  increaseCounter=(increaseValue)=>{
+    this.setState((prevState)=>({
+      counter:prevState.counter+increaseValue
+    }));
+  }
+
+  
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <Button onClickFunction={this.increaseCounter} increaseValue={99}/>
+        <Result counter={this.state.counter}/>
       </div>
     );
   }

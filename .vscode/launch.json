@@ -15,6 +15,18 @@
             "name": "Attach to Chrome",
             "port": 9222,
             "webRoot": "${workspaceRoot}"
-        }
+        },
+
+        {
+            "name": "Chrome",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceRoot}/src",
+            "userDataDir": "${workspaceRoot}/.chrome",
+            "sourceMapPathOverrides": {
+                "webpack:///src/*": "${webRoot}/*"
+            }
+        }        
     ]
 }
